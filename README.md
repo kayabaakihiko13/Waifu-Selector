@@ -31,21 +31,29 @@ Metode yang saya gunakan adalah
 
 ### 1. Scrapping Data
 Data Image ini di ambil dari Pinterest dengan menggunakan BeautifulSoup,numpy,cv2 dan pydotmap
-![Scrapping Data](Doc/image/download.png)
+<p align="center">
+  <img src="Doc/image/images.jpeg" alt="Data Cleaning" />
+</p>
 
 ### 2. Data Cleaning
 Data Cleaning konsepnya dimana karakter anime ini bisa di deteksi dengan menggunakan opencv.kenapa harus menggunakan itu? karena
 karakter tersebut bisa di deteksi hanya dari wajah dan juga mata dari
 karakter tersebut.
 dan juga dari image yang telah di crop
-![Data Cleaning](Doc/image/meme_data.jpeg)
+<p align="center">
+  <img src="./Doc/image/meme_data.jpeg" alt="Data Cleaning" />
+</p>
 
 ### 3. Data Features
 Data feature ini merupakan bagaimana cara dari gambar yang di crop diubah ke dalam bentuk array 3 Dimensi dan juga gambar tersebut juga di Flatten.dan gambar tersebut udah di kasih label sesuai yang telah di folder `dataset`.
-![Features Data](Doc/image/images1.jpeg)
+<p align="center">
+  <img src="Doc/image/images1.jpeg" alt="Data Features" />
+</p>
 
 ### 4. Modeling
 Setelah siap dan data image yang sudah di flatten udah dalam bentuk pandas DataFrame
 abis itu mari kita bikin paramater setiap algoritma di pakai seperti `logistik linear`,`Support Vector Machine.` dan `Random Forest`.
 setelah itu cari yang dimana algoritma menghasilkan best_score maksimal.setelah itu simpan model tersebut.
-![Features Data](Doc/image/dh7s7ifritsa1.jpg)
+<p align="center">
+  <img src="Doc/image/dh7s7ifritsa1.jpg" alt="Data Features" />
+</p>
