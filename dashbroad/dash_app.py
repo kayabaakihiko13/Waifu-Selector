@@ -1,5 +1,7 @@
 import streamlit as st
 import os
+import sys
+sys.path.append("../Selector")
 from Selector.kuntils import *
 model = "../dashbroad/data/saved_model.pkl"
 class_label = "../dashbroad/data/class_dictionary.json"
