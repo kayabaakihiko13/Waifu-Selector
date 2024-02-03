@@ -5,6 +5,8 @@ import joblib
 import pywt
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
+from Selector.featuresExtraction import dwt2d
+
 
 face_casade = cv2.CascadeClassifier("../opencv/lbpcascade_animeface.xml")
 eye_casade = cv2.CascadeClassifier("../opencv/anime-eyes-cascade.xml")
@@ -28,32 +30,12 @@ def get_cropped_image_if_2_eyes(image_path:str):
             return roi_color.astype(np.uint8)
 
 
-def w2d(img, mode='haar', level=1):
-    imArray = img
-    #Datatype conversions
-    #convert to grayscale
-    imArray = cv2.cvtColor( imArray,cv2.COLOR_RGB2GRAY )
-    #convert to float
-    imArray =  np.float32(imArray)   
-    imArray /= 255;
-    # compute coefficients 
-    coeffs=pywt.wavedec2(imArray, mode, level=level)
 
-    #Process Coefficients
-    coeffs_H=list(coeffs)  
-    coeffs_H[0] *= 0;  
-
-    # reconstruction
-    imArray_H=pywt.waverec2(coeffs_H, mode);
-    imArray_H *= 255;
-    imArray_H =  np.uint8(imArray_H)
-
-    return imArray_H
 
 def image_to_array(img_file:str,resize:bool=True):
     img = cv2.imread(img_file)
     scalled_raw_img = cv2.resize(img,(32,32))
-    img_hair = w2d(img,"db1",5)
+    img_hair = dwt2d(img,"db1",5)
     scalled_img_har = cv2.resize(img_hair,(32,32))
     combined_img = np.vstack((scalled_raw_img.reshape(32*32*3,1),
                               scalled_img_har.reshape(32*32,1)))
